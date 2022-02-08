@@ -50,9 +50,13 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../progettoPlamadeala/main.cpp \
+SOURCES       = ../progettoPlamadeala/grafi/GraphData.cpp \
+		../progettoPlamadeala/grafi/RowColumnData.cpp \
+		../progettoPlamadeala/main.cpp \
 		../progettoPlamadeala/mainwindow.cpp moc_mainwindow.cpp
-OBJECTS       = main.o \
+OBJECTS       = GraphData.o \
+		RowColumnData.o \
+		main.o \
 		mainwindow.o \
 		moc_mainwindow.o
 DIST          = ../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/spec_pre.prf \
@@ -235,7 +239,11 @@ DIST          = ../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/lex.prf \
-		../progettoPlamadeala/progettoPlamadeala.pro ../progettoPlamadeala/mainwindow.h ../progettoPlamadeala/main.cpp \
+		../progettoPlamadeala/progettoPlamadeala.pro ../progettoPlamadeala/grafi/GraphData.h \
+		../progettoPlamadeala/grafi/RowColumnData.h \
+		../progettoPlamadeala/mainwindow.h ../progettoPlamadeala/grafi/GraphData.cpp \
+		../progettoPlamadeala/grafi/RowColumnData.cpp \
+		../progettoPlamadeala/main.cpp \
 		../progettoPlamadeala/mainwindow.cpp
 QMAKE_TARGET  = progettoPlamadeala
 DESTDIR       = 
@@ -632,8 +640,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../progettoPlamadeala/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../progettoPlamadeala/main.cpp ../progettoPlamadeala/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../progettoPlamadeala/grafi/GraphData.h ../progettoPlamadeala/grafi/RowColumnData.h ../progettoPlamadeala/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../progettoPlamadeala/grafi/GraphData.cpp ../progettoPlamadeala/grafi/RowColumnData.cpp ../progettoPlamadeala/main.cpp ../progettoPlamadeala/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../progettoPlamadeala/mainwindow.ui $(DISTDIR)/
 
 
@@ -796,6 +804,102 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
+GraphData.o: ../progettoPlamadeala/grafi/GraphData.cpp ../progettoPlamadeala/grafi/GraphData.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qsharedpointer_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GraphData.o ../progettoPlamadeala/grafi/GraphData.cpp
+
+RowColumnData.o: ../progettoPlamadeala/grafi/RowColumnData.cpp ../progettoPlamadeala/grafi/RowColumnData.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QString \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RowColumnData.o ../progettoPlamadeala/grafi/RowColumnData.cpp
+
 main.o: ../progettoPlamadeala/main.cpp ../progettoPlamadeala/mainwindow.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -906,7 +1010,8 @@ main.o: ../progettoPlamadeala/main.cpp ../progettoPlamadeala/mainwindow.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/qinputmethod.h
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/qinputmethod.h \
+		../progettoPlamadeala/grafi/GraphData.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../progettoPlamadeala/main.cpp
 
 mainwindow.o: ../progettoPlamadeala/mainwindow.cpp ../progettoPlamadeala/mainwindow.h \
